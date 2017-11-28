@@ -66,6 +66,7 @@ class PeripheralTableViewCell: UITableViewCell {
 
     @IBAction func onClickConnect(_ sender: AnyObject) {
         onConnect?()
+        NSLog("%@", "tony is here")
     }
 
     // MARK: - UI

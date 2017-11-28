@@ -103,6 +103,8 @@ class UartModeViewController: UartBaseViewController {
     override func send(message: String) {
         guard let uartData = self.uartData as? UartPacketManager else { DLog("Error send with invalid uartData class"); return }
         
+        NSLog("%@", "tony is here2:" + message)
+        
         if let blePeripheral = blePeripheral {      // Single peripheral mode
             uartData.send(blePeripheral: blePeripheral, text: message)
         } else {      // Multiple peripheral mode

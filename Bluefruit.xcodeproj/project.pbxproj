@@ -251,7 +251,6 @@
 		A9BCD5961E4D2616003D1CEA /* MqttSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BCD5891E4D2616003D1CEA /* MqttSettings.swift */; };
 		A9BCD5971E4D2616003D1CEA /* MqttSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BCD5891E4D2616003D1CEA /* MqttSettings.swift */; };
 		A9BCD5A71E4D2762003D1CEA /* watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A9BCD5A61E4D2761003D1CEA /* watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A9BCD5B81E4D2762003D1CEA /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A9BCD59A1E4D2761003D1CEA /* watchOS.app */; };
 		A9BCD5DB1E4D287A003D1CEA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BCD5D11E4D286A003D1CEA /* Interface.storyboard */; };
 		A9BCD5DC1E4D287D003D1CEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BCD5D01E4D286A003D1CEA /* Assets.xcassets */; };
 		A9BCD5DD1E4D289E003D1CEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BCD5D51E4D286A003D1CEA /* Assets.xcassets */; };
@@ -330,13 +329,6 @@
 			remoteGlobalIDString = A9BCD5A51E4D2761003D1CEA;
 			remoteInfo = "Bluefruit Extension";
 		};
-		A9BCD5B61E4D2762003D1CEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A9286C8E1E3A9216008E5F81 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A9BCD5991E4D2761003D1CEA;
-			remoteInfo = Bluefruit;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -357,7 +349,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				A9BCD5B81E4D2762003D1CEA /* watchOS.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1656,7 +1647,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A9BCD5B71E4D2762003D1CEA /* PBXTargetDependency */,
 			);
 			name = iOS;
 			productName = Bluefruit;
@@ -1743,11 +1733,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = Adafruit;
+				ORGANIZATIONNAME = ezkey;
 				TargetAttributes = {
 					A9286C951E3A9216008E5F81 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2X94RM7457;
+						DevelopmentTeam = JW89559292;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2315,11 +2305,6 @@
 			target = A9BCD5A51E4D2761003D1CEA /* watchOS Extension */;
 			targetProxy = A9BCD5A81E4D2762003D1CEA /* PBXContainerItemProxy */;
 		};
-		A9BCD5B71E4D2762003D1CEA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A9BCD5991E4D2761003D1CEA /* watchOS */;
-			targetProxy = A9BCD5B61E4D2762003D1CEA /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -2517,12 +2502,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Bluefruit/Platform/iOS/Bluefruit.entitlements;
-				DEVELOPMENT_TEAM = 2X94RM7457;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JW89559292;
 				INFOPLIST_FILE = Bluefruit/Platform/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.bluefruitconnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ezkey.bluefruitconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bluefruit/Platform/iOS/Bluefruit-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -2535,12 +2523,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Bluefruit/Platform/iOS/Bluefruit.entitlements;
-				DEVELOPMENT_TEAM = 2X94RM7457;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JW89559292;
 				INFOPLIST_FILE = Bluefruit/Platform/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.bluefruitconnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ezkey.bluefruitconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bluefruit/Platform/iOS/Bluefruit-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;

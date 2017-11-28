@@ -261,7 +261,7 @@
                                 <rect key="frame" x="20" y="501" width="760" height="6"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1mG-jJ-5xo">
-                                        <rect key="frame" x="0.0" y="0.0" width="630" height="6"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="621" height="6"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
@@ -269,9 +269,9 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hwu-uD-5tU" customClass="StyledButton" customModule="iOS" customModuleProvider="target">
-                                        <rect key="frame" x="638" y="0.0" width="56" height="6"/>
+                                        <rect key="frame" x="629" y="0.0" width="65" height="6"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                        <state key="normal" title="Send"/>
+                                        <state key="normal" title="TSend"/>
                                         <connections>
                                             <action selector="onClickSend:" destination="nMN-bC-Caa" eventType="touchUpInside" id="yyK-O7-ypH"/>
                                         </connections>
@@ -882,7 +882,7 @@
             </objects>
             <point key="canvasLocation" x="4935" y="263"/>
         </scene>
-        <!--UART-->
+        <!--UART_Not_Useful-->
         <scene sceneID="Jqn-CU-DIN">
             <objects>
                 <viewController storyboardIdentifier="UartServiceViewController" automaticallyAdjustsScrollViewInsets="NO" id="2KX-i8-vOB" customClass="UartServiceViewController" customModule="iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -1124,7 +1124,7 @@
                                 <rect key="frame" x="20" y="501" width="760" height="6"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gbp-6I-SDZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="696" height="6"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="687" height="6"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
@@ -1132,9 +1132,9 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiA-c3-707" customClass="StyledButton" customModule="iOS" customModuleProvider="target">
-                                        <rect key="frame" x="704" y="0.0" width="56" height="6"/>
+                                        <rect key="frame" x="695" y="0.0" width="65" height="6"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                        <state key="normal" title="Send"/>
+                                        <state key="normal" title="PSend"/>
                                         <connections>
                                             <action selector="onClickSend:" destination="2KX-i8-vOB" eventType="touchUpInside" id="oJz-g0-j5V"/>
                                         </connections>
@@ -1166,7 +1166,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="UART" id="xYh-HX-RLv">
+                    <navigationItem key="navigationItem" title="UART_Not_Useful" id="xYh-HX-RLv">
                         <rightBarButtonItems>
                             <barButtonItem image="ic_settings" id="eGR-sN-XQY">
                                 <connections>

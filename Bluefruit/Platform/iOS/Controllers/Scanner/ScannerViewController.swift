@@ -344,7 +344,8 @@ class ScannerViewController: ModeTabViewController {
 
         if segue.identifier == "filterNameSettingsSegue", let controller = segue.destination.popoverPresentationController {
             controller.delegate = self
-
+            NSLog("%@", "poop")
+            
             if let sourceView = sender as? UIView {
                 // Fix centering on iOS9, iOS10: http://stackoverflow.com/questions/30064595/popover-doesnt-center-on-button
                 controller.sourceRect = sourceView.bounds

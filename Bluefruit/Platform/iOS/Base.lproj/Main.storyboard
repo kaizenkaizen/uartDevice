@@ -1864,7 +1864,7 @@
             </objects>
             <point key="canvasLocation" x="-2162" y="-459"/>
         </scene>
-        <!--Central Mode-->
+        <!--customization-->
         <scene sceneID="fQt-IA-HaY">
             <objects>
                 <viewController storyboardIdentifier="ScannerViewController" automaticallyAdjustsScrollViewInsets="NO" id="DSy-Yb-eRw" customClass="ScannerViewController" customModule="iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -1872,7 +1872,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDO-MZ-4ce">
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDO-MZ-4ce">
                                 <rect key="frame" x="0.0" y="64" width="375" height="230"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHf-ER-T4b">
@@ -2052,7 +2052,7 @@
                                     <constraint firstItem="7aK-IC-WZP" firstAttribute="top" secondItem="Ox3-1q-kTv" secondAttribute="bottom" constant="11" id="yZ2-ap-FW6"/>
                                 </constraints>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRw-K6-EeU">
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRw-K6-EeU">
                                 <rect key="frame" x="0.0" y="302" width="375" height="90"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vD-iG-Z0B">
@@ -2483,7 +2483,7 @@
                                     <outlet property="delegate" destination="DSy-Yb-eRw" id="bK1-FK-XDa"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 peripherals filtered out" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x84-z7-Nvm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="10 peripherals filtered out" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x84-z7-Nvm">
                                 <rect key="frame" x="16" y="430" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2504,13 +2504,13 @@
                             <constraint firstItem="fj3-QM-PB1" firstAttribute="trailing" secondItem="UrF-25-uzR" secondAttribute="trailing" id="kKc-7r-oJC"/>
                             <constraint firstItem="xDO-MZ-4ce" firstAttribute="top" secondItem="fj3-QM-PB1" secondAttribute="top" id="o4l-FO-3bO"/>
                             <constraint firstItem="fj3-QM-PB1" firstAttribute="trailing" secondItem="xDO-MZ-4ce" secondAttribute="trailing" id="p4b-b2-X6Z"/>
-                            <constraint firstItem="x84-z7-Nvm" firstAttribute="top" secondItem="UrF-25-uzR" secondAttribute="top" constant="30" id="q8V-c3-RND"/>
+                            <constraint firstItem="x84-z7-Nvm" firstAttribute="top" relation="lessThanOrEqual" secondItem="UrF-25-uzR" secondAttribute="top" constant="30" id="q8V-c3-RND"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fj3-QM-PB1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Central Mode" id="qMW-AH-yIG">
+                    <navigationItem key="navigationItem" title="customization" id="qMW-AH-yIG">
                         <barButtonItem key="backBarButtonItem" title="Disconnect" id="Uhk-EF-ls1"/>
-                        <barButtonItem key="rightBarButtonItem" image="info_icon" id="hlq-Ac-NuC">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="info_icon" id="hlq-Ac-NuC">
                             <connections>
                                 <action selector="onClickInfo:" destination="DSy-Yb-eRw" id="fyc-PY-lid"/>
                             </connections>
@@ -2549,7 +2549,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKZ-RS-hx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-719" y="-564"/>
+            <point key="canvasLocation" x="-719.20000000000005" y="-564.01799100449784"/>
         </scene>
         <!--Filter Text Settings View Controller-->
         <scene sceneID="gtE-yo-luE">
