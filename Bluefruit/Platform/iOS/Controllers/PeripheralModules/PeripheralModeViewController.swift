@@ -17,7 +17,7 @@ class PeripheralModeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = StyleConfig.backgroundColor
+        //self.view.backgroundColor = StyleConfig.backgroundColor
     }
 
     override func viewWillAppear(_ animated: Bool) {

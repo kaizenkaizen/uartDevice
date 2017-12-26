@@ -13,6 +13,7 @@ class UartModeViewController: UartBaseViewController {
 
     // MARK: - View Lifecycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         // Title
@@ -22,6 +23,7 @@ class UartModeViewController: UartBaseViewController {
         
         // Init Uart
         uartData = UartPacketManager(delegate: self, isPacketCacheEnabled: true, isMqttEnabled: true)
+        
     }
     
     override func didReceiveMemoryWarning() {

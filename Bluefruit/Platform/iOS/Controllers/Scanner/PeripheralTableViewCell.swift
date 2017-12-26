@@ -67,7 +67,16 @@ class PeripheralTableViewCell: UITableViewCell {
     @IBAction func onClickConnect(_ sender: AnyObject) {
         onConnect?()
         NSLog("%@", "tony is here")
+        
+//        let Uartstoryboard = UIStoryboard(name: "Uart", bundle: nil)
+//        let vc = Uartstoryboard.instantiateViewController(withIdentifier: "UartModeViewController") as! UIViewController
+//        self.curren
+//        self.present(vc, animated: true, completion: nil)
+        
+        
     }
+    
+    
 
     // MARK: - UI
     func showDisconnectButton(show: Bool) {

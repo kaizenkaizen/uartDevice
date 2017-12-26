@@ -49,6 +49,13 @@ class PeripheralModulesViewController: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // tony wrote this code as a hack lol
+        if let uartViewController = self.storyboard?.instantiateViewController(withIdentifier: "UartModeViewController") as? UartModeViewController {
+            uartViewController.blePeripheral = blePeripheral
+            show(uartViewController, sender: self)
+        }
+        // tony wrote this code as a hack lol
 
         // UI
         if let splitViewController = self.splitViewController {

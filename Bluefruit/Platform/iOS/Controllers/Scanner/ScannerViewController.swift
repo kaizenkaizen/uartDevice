@@ -44,7 +44,8 @@ class ScannerViewController: ModeTabViewController {
 
     @IBOutlet weak var filteredPeripheralsCountLabel: UILabel!
 
-    
+    weak var blePeripheral: BlePeripheral?
+
     // Data
     fileprivate let refreshControl = UIRefreshControl()
     fileprivate var peripheralList: PeripheralList!
@@ -692,6 +693,31 @@ extension ScannerViewController: UITableViewDataSource {
 
         peripheralCell.onConnect = { [unowned self] in
             self.connect(peripheral: peripheral)
+            NSLog("%@", "tony is here 3")
+            
+            let Uartstoryboard = UIStoryboard(name: "Uart", bundle: nil)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "UartModeViewController") as! UIViewController
+            self.present(vc, animated: true, completion: nil)
+            
+            
+            /*if let uartViewController = Uartstoryboard.instantiateViewController(withIdentifier: "UartModeViewController") as? UartModeViewController {
+                self.uartViewController.blePeripheral = blePeripheral
+                self.show(uartViewController, sender: self)
+            }*/
+//            if let uartViewController = self.storyboard?.instantiateViewController(withIdentifier: "UartModeViewController") as? UartModeViewController {
+//                //uartViewController.blePeripheral = selectedPeripheral
+////                show(uartViewController, sender: self)
+//                self.showViewController(uartViewController, sender: self)
+//
+//                NSLog("%@", "tony is here 4")
+//
+//            }
+            
+            /*
+             PeripheralModulesViewController {
+             peripheralModulesViewController.blePeripheral = selectedPeripheral
+             showDetailViewController(peripheralModulesNavigationController, sender: self)
+             */
         }
         peripheralCell.onDisconnect = { [unowned self] in
             tableView.deselectRow(at: indexPath, animated: true)

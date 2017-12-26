@@ -295,6 +295,9 @@ class PeripheralListViewController: NSViewController {
         //selectedPeripheral = peripheral
         BleManager.sharedInstance.connect(to: peripheral)
        // reloadBaseTable()
+        
+        NSLog("%@", "tony clicked on ble connect haha");
+
     }
     
     fileprivate func disconnect(peripheral: BlePeripheral) {
@@ -452,6 +455,15 @@ extension PeripheralListViewController: NSTableViewDelegate {
         // Connect new
         if blePeripheral != nil, !isPeripheralConnected(identifier: blePeripheral!.identifier, includeConnecting: true) {
             self.connect(peripheral: blePeripheral!)
+            // secret spot
+            
+            NSLog("%@", "tony clicked on ble connect");
+            
+            let uartViewController = self.storyboard?.instantiateViewController(withIdentifier: "UartModeViewController") as? UartModeViewController
+            
+                uartViewController.blePeripheral = blePeripheral
+                show(uartViewController, sender: self)
+            
         }
     }
 }

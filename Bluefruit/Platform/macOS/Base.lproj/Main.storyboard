@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1889,7 +1889,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qj6-rZ-ofo">
-                                        <rect key="frame" x="87" y="0.0" width="158" height="20"/>
+                                        <rect key="frame" x="87" y="0.0" width="157" height="20"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="v4Z-nS-N0p">
                                             <font key="font" metaFont="cellTitle"/>
                                             <segments>
@@ -1902,7 +1902,7 @@
                                         </segmentedCell>
                                     </segmentedControl>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UJP-mK-pDD">
-                                        <rect key="frame" x="262" y="4" width="90" height="17"/>
+                                        <rect key="frame" x="261" y="4" width="90" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Display Mode:" id="XjT-zm-YWK">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1910,7 +1910,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DeK-PT-Xen">
-                                        <rect key="frame" x="357" y="0.0" width="143" height="20"/>
+                                        <rect key="frame" x="356" y="0.0" width="142" height="20"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="hzo-Rl-YWc">
                                             <font key="font" metaFont="cellTitle"/>
                                             <segments>
@@ -1923,7 +1923,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <button toolTip="Shows sent messages" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KXT-rl-DjG">
-                                        <rect key="frame" x="519" y="0.0" width="132" height="19"/>
+                                        <rect key="frame" x="517" y="0.0" width="132" height="19"/>
                                         <buttonCell key="cell" type="roundRect" title="MQTT: disconnected" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="ZN5-of-vhU">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="cellTitle"/>
@@ -2676,7 +2676,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UA3-jZ-Mab">
-                                                                    <rect key="frame" x="158" y="-45" width="130" height="24"/>
+                                                                    <rect key="frame" x="158" y="-45" width="129" height="24"/>
                                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="PCq-tV-xT6">
                                                                         <font key="font" metaFont="system"/>
                                                                         <segments>
@@ -2689,7 +2689,7 @@
                                                                     </connections>
                                                                 </segmentedControl>
                                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kpe-Ki-6hg">
-                                                                    <rect key="frame" x="120" y="-86" width="206" height="24"/>
+                                                                    <rect key="frame" x="119" y="-86" width="207" height="24"/>
                                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="4Ok-JJ-OWs">
                                                                         <font key="font" metaFont="system"/>
                                                                         <segments>
@@ -2702,7 +2702,7 @@
                                                                     </connections>
                                                                 </segmentedControl>
                                                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D0T-Sc-gZj">
-                                                                    <rect key="frame" x="158" y="-83" width="130" height="19"/>
+                                                                    <rect key="frame" x="158" y="-83" width="129" height="19"/>
                                                                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="255" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="dTF-b6-BXS"/>
                                                                     <connections>
                                                                         <action selector="onValueSliderChanged:" target="FLq-fE-qfq" id="yzY-LT-7Fw"/>

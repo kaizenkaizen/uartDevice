@@ -11,7 +11,8 @@ import UIKit
 import UIKit
 import UIColor_Hex
 
-class UartBaseViewController: PeripheralModeViewController {
+class UartBaseViewController: PeripheralModeViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     // Config
     fileprivate static var dataRxFont = UIFont(name: "CourierNewPSMT", size: 14)! //Font.systemFontOfSize(Font.systemFontSize())
     fileprivate static var dataTxFont = UIFont(name: "CourierNewPS-BoldMT", size: 14)!
@@ -20,29 +21,42 @@ class UartBaseViewController: PeripheralModeViewController {
     fileprivate static let kExportFormats: [ExportFormat] = [.txt, .csv, .json/*, .xml*/, .bin]
     
     // UI
-    @IBOutlet weak var baseTableView: UITableView!
-    @IBOutlet weak var baseTextView: UITextView!
-    @IBOutlet weak var statsLabel: UILabel!
-    @IBOutlet weak var statsLabeliPadLeadingConstraint: NSLayoutConstraint!         // remove ipad or iphone depending on the platform
-    @IBOutlet weak var statsLabeliPhoneLeadingConstraint: NSLayoutConstraint!       // remove ipad or iphone depending on the platform
+    //@IBOutlet weak var baseTableView: UITableView!
+    //@IBOutlet weak var baseTextView: UITextView!
+    //@IBOutlet weak var statsLabel: UILabel!
+    //@IBOutlet weak var statsLabeliPadLeadingConstraint: NSLayoutConstraint!         // remove ipad or iphone depending on the platform
+    //@IBOutlet weak var statsLabeliPhoneLeadingConstraint: NSLayoutConstraint!       // remove ipad or iphone depending on the platform
     
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var sendInputButton: UIButton!
-    @IBOutlet weak var sendPeripheralButton: UIButton?
+    @IBOutlet weak var usernameButton: UIButton!
+    @IBOutlet weak var passwordButton: UIButton!
+    @IBOutlet weak var passwordAndPasswordButton: UIButton!
+
+    //@IBOutlet weak var sendPeripheralButton: UIButton?
     @IBOutlet weak var keyboardSpacerHeightConstraint: NSLayoutConstraint!
     
     fileprivate var mqttBarButtonItem: UIBarButtonItem!
     fileprivate var mqttBarButtonItemImageView: UIImageView?
     @IBOutlet weak var moreOptionsNavigationItem: UIBarButtonItem!
     @IBOutlet weak var mainStackView: UIStackView!
-    @IBOutlet weak var controlsView: UIView!
-    @IBOutlet weak var inputControlsStackView: UIStackView!
+    //@IBOutlet weak var controlsView: UIView!
+    //@IBOutlet weak var inputControlsStackView: UIStackView!
     
-    @IBOutlet weak var showEolSwitch: UISwitch!
-    @IBOutlet weak var addEolSwitch: UISwitch!
-    @IBOutlet weak var exportButton: UIButton!
-    @IBOutlet weak var displayModeSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var dataModeSegmentedControl: UISegmentedControl!
+    //@IBOutlet weak var showEolSwitch: UISwitch!
+    //@IBOutlet weak var addEolSwitch: UISwitch!
+    //@IBOutlet weak var exportButton: UIButton!
+    //@IBOutlet weak var displayModeSegmentedControl: UISegmentedControl!
+    //@IBOutlet weak var dataModeSegmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var picker: UIPickerView!
+    var pickerData: [String] = [String]()
+    
+    var passwords = ["Tmobile" : "yummy",
+                     "Amazon": "yummy"]
+    
+    var usernames = ["Tmobile" : "4103443711",
+                     "Amazon": "xt280@nyu.edu"]
     
     // Data
     enum DisplayMode {
@@ -70,45 +84,49 @@ class UartBaseViewController: PeripheralModeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.picker.delegate = self
+        self.picker.dataSource = self
+
+        pickerData = ["Tmobile", "Amazon", "Ebay"]
         // Init Data
         keyboardPositionNotifier.delegate = self
         timestampDateFormatter.setLocalizedDateFormatFromTemplate("HH:mm:ss")
         
         // Setup tableView
         // Note: Don't use automatic height because its to slow with a large amount of rows
-        baseTableView.layer.borderWidth = 1
-        baseTableView.layer.borderColor = UIColor.lightGray.cgColor
+//        baseTableView.layer.borderWidth = 1
+//        baseTableView.layer.borderColor = UIColor.lightGray.cgColor
         
         // Setup textview
-        baseTextView.layer.borderWidth = 1
-        baseTextView.layer.borderColor = UIColor.lightGray.cgColor
+//        baseTextView.layer.borderWidth = 1
+//        baseTextView.layer.borderColor = UIColor.lightGray.cgColor
         
         // Setup controls
         let localizationManager = LocalizationManager.sharedInstance
-        displayModeSegmentedControl.setTitle(localizationManager.localizedString("uart_settings_displayMode_timestamp"), forSegmentAt: 0)
-        displayModeSegmentedControl.setTitle(localizationManager.localizedString("uart_settings_displayMode_text"), forSegmentAt: 1)
-        dataModeSegmentedControl.setTitle(localizationManager.localizedString("uart_settings_dataMode_ascii"), forSegmentAt: 0)
-        dataModeSegmentedControl.setTitle(localizationManager.localizedString("uart_settings_dataMode_hex"), forSegmentAt: 1)
+//        displayModeSegmentedControl.setTitle(localizationManager.localizedString("uart_settings_displayMode_timestamp"), forSegmentAt: 0)
+//        displayModeSegmentedControl.setTitle(localizationManager.localizedString("uart_settings_displayMode_text"), forSegmentAt: 1)
+//        dataModeSegmentedControl.setTitle(localizationManager.localizedString("uart_settings_dataMode_ascii"), forSegmentAt: 0)
+//        dataModeSegmentedControl.setTitle(localizationManager.localizedString("uart_settings_dataMode_hex"), forSegmentAt: 1)
         
         // Init options layout
         if UI_USER_INTERFACE_IDIOM() == .pad { //traitCollection.userInterfaceIdiom == .pad {            // iPad
-            self.view.removeConstraint(statsLabeliPhoneLeadingConstraint)
+//            self.view.removeConstraint(statsLabeliPhoneLeadingConstraint)
             
             // Resize input UISwitch controls
-            for subStackView in inputControlsStackView.subviews {
-                for subview in subStackView.subviews {
-                    if let switchView = subview as? UISwitch {
-                        switchView.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-                    }
-                }
-            }
+//            for subStackView in inputControlsStackView.subviews {
+//                for subview in subStackView.subviews {
+//                    if let switchView = subview as? UISwitch {
+//                        switchView.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+//                    }
+//                }
+//            }
         } else {            // iPhone
-            self.view.removeConstraint(statsLabeliPadLeadingConstraint)
-            statsLabel.textAlignment = .left
-            inputControlsStackView.isHidden = true
+//            self.view.removeConstraint(statsLabeliPadLeadingConstraint)
+//            statsLabel.textAlignment = .left
+//            inputControlsStackView.isHidden = true
         }
         
-        sendPeripheralButton?.isHidden = !isInMultiUartMode()
+//        sendPeripheralButton?.isHidden = !isInMultiUartMode()
         if !isInMultiUartMode() {
             // Mqtt init
             mqttBarButtonItemImageView = UIImageView(image: UIImage(named: "mqtt_disconnected")!.tintWithColor(self.view.tintColor))      // use a uiimageview as custom barbuttonitem to allow frame animations
@@ -132,7 +150,7 @@ class UartBaseViewController: PeripheralModeViewController {
         
         // Hide top controls on iPhone
         if UI_USER_INTERFACE_IDIOM() == .phone {// traitCollection.userInterfaceIdiom == .phone {
-            controlsView.isHidden = true
+//            controlsView.isHidden = true
         }
     }
     
@@ -190,7 +208,7 @@ class UartBaseViewController: PeripheralModeViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        baseTableView.enh_cancelPendingReload()
+//        baseTableView.enh_cancelPendingReload()
     }
     
     override func didReceiveMemoryWarning() {
@@ -255,8 +273,8 @@ class UartBaseViewController: PeripheralModeViewController {
     private func reloadDataUI() {
         let displayMode: UartModeViewController.DisplayMode = Preferences.uartIsDisplayModeTimestamp ? .table : .text
         
-        baseTableView.isHidden = displayMode == .text
-        baseTextView.isHidden = displayMode == .table
+//        baseTableView.isHidden = displayMode == .text
+//        baseTextView.isHidden = displayMode == .table
         
         switch displayMode {
         case .text:
@@ -265,7 +283,7 @@ class UartBaseViewController: PeripheralModeViewController {
             for dataPacket in dataPackets {
                 onUartPacketText(dataPacket)
             }
-            baseTextView.attributedText = textCachedBuffer
+//            baseTextView.attributedText = textCachedBuffer
             reloadData()
             
         case .table:
@@ -276,10 +294,10 @@ class UartBaseViewController: PeripheralModeViewController {
     }
     
     fileprivate func reloadControlsUI() {
-        showEolSwitch.isOn = Preferences.uartIsAutomaticEolEnabled
-        addEolSwitch.isOn = Preferences.uartIsEchoEnabled
-        displayModeSegmentedControl.selectedSegmentIndex = Preferences.uartIsDisplayModeTimestamp ? 0:1
-        dataModeSegmentedControl.selectedSegmentIndex = Preferences.uartIsInHexMode ? 1:0
+//        showEolSwitch.isOn = Preferences.uartIsAutomaticEolEnabled
+//        addEolSwitch.isOn = Preferences.uartIsEchoEnabled
+//        displayModeSegmentedControl.selectedSegmentIndex = Preferences.uartIsDisplayModeTimestamp ? 0:1
+//        dataModeSegmentedControl.selectedSegmentIndex = Preferences.uartIsInHexMode ? 1:0
     }
     
     fileprivate func updateBytesUI() {
@@ -287,7 +305,7 @@ class UartBaseViewController: PeripheralModeViewController {
         let sentBytesMessage = String(format: localizationManager.localizedString("uart_sentbytes_format"), arguments: [uartData.sentBytes])
         let receivedBytesMessage = String(format: localizationManager.localizedString("uart_recievedbytes_format"), arguments: [uartData.receivedBytes])
         
-        statsLabel.text = String(format: "%@     %@", arguments: [sentBytesMessage, receivedBytesMessage])
+//        statsLabel.text = String(format: "%@     %@", arguments: [sentBytesMessage, receivedBytesMessage])
     }
     
     internal func updateUartReadyUI(isReady: Bool) {
@@ -328,6 +346,51 @@ class UartBaseViewController: PeripheralModeViewController {
         inputTextField.resignFirstResponder()
     }
     
+    @IBAction func onClickUsername(_ sender: AnyObject) {
+        //guard let blePeripheral = blePeripheral else { return }
+        
+//        var newText = "4103443711"
+//
+//        // Eol
+//        if Preferences.uartIsAutomaticEolEnabled {
+//            newText += Preferences.uartEolCharacters //"\n"
+//        }
+        
+        var selectedPickerValue = pickerData[picker.selectedRow(inComponent: 0)]
+        NSLog("%@", "hohoho")
+        NSLog("%@", selectedPickerValue)
+        
+        
+        
+        let messageToSend = usernames[selectedPickerValue]!
+        
+
+        send(message: messageToSend)
+    }
+    
+    @IBAction func onClickUsernameAndPassword(_ sender: AnyObject) {
+        var selectedPickerValue = pickerData[picker.selectedRow(inComponent: 0)]
+        var messageToSend = usernames[selectedPickerValue]! + "\t" + passwords[selectedPickerValue]!
+        send(message: messageToSend)
+    }
+    
+    @IBAction func onClickPassword(_ sender: AnyObject) {
+        //guard let blePeripheral = blePeripheral else { return }
+        
+        //        var newText = "4103443711"
+        //
+        //        // Eol
+        //        if Preferences.uartIsAutomaticEolEnabled {
+        //            newText += Preferences.uartEolCharacters //"\n"
+        //        }
+        
+        var selectedPickerValue = pickerData[picker.selectedRow(inComponent: 0)]
+        
+        
+        let messageToSend = passwords[selectedPickerValue]!
+        
+        send(message: messageToSend)
+    }
     
     @IBAction func onInputTextFieldEdidtingDidEndOnExit(_ sender: UITextField) {
         onClickSend(sender)
@@ -374,8 +437,8 @@ class UartBaseViewController: PeripheralModeViewController {
         let cancelAction = UIAlertAction(title: localizationManager.localizedString("dialog_cancel"), style: .cancel, handler:nil)
         alertController.addAction(cancelAction)
         
-        alertController.popoverPresentationController?.sourceView = exportButton
-        alertController.popoverPresentationController?.sourceRect = exportButton.bounds
+//        alertController.popoverPresentationController?.sourceView = exportButton
+//        alertController.popoverPresentationController?.sourceRect = exportButton.bounds
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -384,8 +447,8 @@ class UartBaseViewController: PeripheralModeViewController {
             // TODO: replace randomly generated iOS filenames: https://thomasguenzel.com/blog/2015/04/16/uiactivityviewcontroller-nsdata-with-filename/
             
             let activityViewController = UIActivityViewController(activityItems: [object], applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = exportButton
-            activityViewController.popoverPresentationController?.sourceRect = exportButton.bounds
+//            activityViewController.popoverPresentationController?.sourceView = exportButton
+//            activityViewController.popoverPresentationController?.sourceRect = exportButton.bounds
             
             navigationController?.present(activityViewController, animated: true, completion: nil)
         } else {
@@ -440,6 +503,18 @@ class UartBaseViewController: PeripheralModeViewController {
     fileprivate func fontForPacket(packet: UartPacket) -> UIFont {
         let font = packet.mode == .tx ? UartModeViewController.dataTxFont : UartModeViewController.dataRxFont
         return font
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
     }
 }
 
@@ -497,7 +572,7 @@ extension UartBaseViewController: UartPacketManagerDelegate {
     
     func onUartPacket(_ packet: UartPacket) {
         // Check that the view has been initialized before updating UI
-        guard isViewLoaded && view.window != nil && baseTableView != nil else { return }
+//        guard isViewLoaded && view.window != nil && baseTableView != nil else { return }
         
         let displayMode: UartModeViewController.DisplayMode = Preferences.uartIsDisplayModeTimestamp ? .table : .text
         
@@ -517,20 +592,20 @@ extension UartBaseViewController: UartPacketManagerDelegate {
         let displayMode: UartModeViewController.DisplayMode = Preferences.uartIsDisplayModeTimestamp ? .table : .text
         switch displayMode {
         case .text:
-            baseTextView.attributedText = textCachedBuffer
+//            baseTextView.attributedText = textCachedBuffer
             
             let textLength = textCachedBuffer.length
             if textLength > 0 {
                 let range = NSMakeRange(textLength - 1, 1)
-                baseTextView.scrollRangeToVisible(range)
+//                baseTextView.scrollRangeToVisible(range)
             }
             
         case .table:
-            baseTableView.reloadData()
+//            baseTableView.reloadData()
             if let tableCachedDataBuffer = tableCachedDataBuffer {
                 if tableCachedDataBuffer.count > 0 {
                     let lastIndex = IndexPath(row: tableCachedDataBuffer.count-1, section: 0)
-                    baseTableView.scrollToRow(at: lastIndex, at: .bottom, animated: false)
+//                    baseTableView.scrollToRow(at: lastIndex, at: .bottom, animated: false)
                 }
             }
         }
@@ -649,7 +724,7 @@ extension UartBaseViewController: MqttManagerDelegate {
 extension UartBaseViewController: UartSelectPeripheralViewControllerDelegate {
     func onUartSendToChanged(uuid: UUID?, name: String) {
         multiUartSendToPeripheralId = uuid
-        sendPeripheralButton?.setTitle(name, for: .normal)
+//        sendPeripheralButton?.setTitle(name, for: .normal)
     }
     
 }
